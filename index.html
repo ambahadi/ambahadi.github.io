@@ -22,8 +22,8 @@
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
             background-color: var(--bg);
-            background-image: radial-gradient(at 0% 0%, rgba(37, 99, 235, 0.05) 0px, transparent 50%), 
-                              radial-gradient(at 100% 100%, rgba(6, 182, 212, 0.05) 0px, transparent 50%);
+            background-image: radial-gradient(at 0% 0%, rgba(37, 99, 235, 0.08) 0px, transparent 50%), 
+                              radial-gradient(at 100% 100%, rgba(6, 182, 212, 0.08) 0px, transparent 50%);
             color: var(--text-main);
             margin: 0;
             line-height: 1.6;
@@ -31,7 +31,7 @@
 
         .hero {
             background: #ffffff;
-            padding: 60px 20px;
+            padding: 80px 20px 60px;
             text-align: center;
             border-bottom: 1px solid #e2e8f0;
             box-shadow: var(--shadow);
@@ -39,9 +39,14 @@
 
         .profile-container {
             position: relative;
-            width: 150px;
-            height: 150px;
-            margin: 0 auto 20px;
+            width: 180px;
+            height: 180px;
+            margin: 0 auto 25px;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(0,0,0,0.05);
         }
 
         .profile-img {
@@ -49,8 +54,8 @@
             height: 100%;
             border-radius: 50%;
             object-fit: cover;
-            border: 5px solid #fff;
-            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            border: 4px solid #fff;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
         }
 
         .container {
@@ -63,12 +68,12 @@
         }
 
         aside {
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(10px);
-            padding: 30px;
-            border-radius: 30px;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(15px);
+            padding: 35px;
+            border-radius: 35px;
             height: fit-content;
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.6);
             box-shadow: var(--shadow);
             position: sticky;
             top: 20px;
@@ -77,19 +82,19 @@
         .content-card {
             background: var(--card-bg);
             padding: 40px;
-            border-radius: 30px;
+            border-radius: 35px;
             margin-bottom: 30px;
             box-shadow: var(--shadow);
             border: 1px solid #f1f5f9;
         }
 
-        h1 { font-size: 32px; margin: 0; color: #0f172a; font-weight: 800; }
-        .tagline { color: var(--primary); font-weight: 600; font-size: 18px; margin-top: 5px; }
+        h1 { font-size: 36px; margin: 0; color: #0f172a; font-weight: 800; letter-spacing: -0.02em; }
+        .tagline { color: var(--primary); font-weight: 700; font-size: 19px; margin-top: 8px; }
 
         h2 { 
-            font-size: 14px; 
+            font-size: 13px; 
             text-transform: uppercase; 
-            letter-spacing: 2px; 
+            letter-spacing: 2.5px; 
             color: var(--secondary); 
             margin-bottom: 25px; 
             display: flex; 
@@ -97,43 +102,38 @@
         }
         h2::after { content: ""; height: 2px; flex: 1; background: #f1f5f9; margin-left: 15px; }
 
-        /* Contact Links Styling */
         .contact-link {
             display: flex;
             align-items: center;
             gap: 12px;
-            font-size: 14px;
+            font-size: 14.5px;
             color: var(--text-dim);
             text-decoration: none;
-            margin-bottom: 15px;
-            padding: 8px 0;
+            margin-bottom: 18px;
         }
-        .contact-link:hover {
-            color: var(--primary);
-            transform: translateX(5px);
-        }
-        .contact-icon { font-size: 18px; }
-
-        .exp-item { margin-bottom: 30px; padding-left: 20px; border-left: 3px solid #e2e8f0; position: relative; }
-        .exp-item:hover { border-left-color: var(--primary); }
-        .exp-header { display: flex; justify-content: space-between; align-items: baseline; }
-        .job-title { font-weight: 700; font-size: 18px; color: #0f172a; }
-        .job-date { font-size: 12px; color: var(--primary); font-weight: 700; background: #eff6ff; padding: 4px 10px; border-radius: 20px; }
-        .company-name { display: block; color: var(--secondary); font-weight: 600; margin-bottom: 5px; }
+        .contact-link:hover { color: var(--primary); transform: translateX(8px); }
 
         .achievement-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-        .achievement-box { background: #f8fafc; padding: 15px; border-radius: 15px; border: 1px solid #edf2f7; font-size: 14px; }
+        .achievement-box { background: #f8fafc; padding: 20px; border-radius: 20px; border: 1px solid #edf2f7; font-size: 14px; }
+        .achievement-box strong { color: var(--primary); display: block; font-size: 16px; margin-bottom: 4px; }
+
+        .exp-item { margin-bottom: 35px; padding-left: 25px; border-left: 3px solid #f1f5f9; position: relative; }
+        .exp-item:hover { border-left-color: var(--primary); }
+        .exp-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+        .job-title { font-weight: 800; font-size: 19px; color: #0f172a; }
+        .job-date { font-size: 11px; color: var(--primary); font-weight: 700; background: #eff6ff; padding: 5px 14px; border-radius: 25px; text-transform: uppercase; }
+        .company-name { display: block; color: var(--secondary); font-weight: 650; font-size: 15px; margin-bottom: 10px; }
 
         .skill-tag {
-            display: inline-block; background: #f1f5f9; color: #475569; padding: 6px 14px; border-radius: 10px;
-            font-size: 13px; font-weight: 600; margin: 0 5px 8px 0;
+            display: inline-block; background: #f1f5f9; color: #475569; padding: 8px 16px; border-radius: 12px;
+            font-size: 12.5px; font-weight: 700; margin: 0 5px 10px 0;
         }
-        .skill-tag:hover { background: var(--primary); color: #fff; }
+        .skill-tag:hover { background: var(--primary); color: white; transform: translateY(-3px); }
 
         .btn-download {
             display: block; text-align: center; background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white; padding: 15px; border-radius: 15px; font-weight: 700; text-decoration: none; 
-            margin-top: 20px; box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+            color: white; padding: 18px; border-radius: 20px; font-weight: 800; text-decoration: none; 
+            margin-top: 25px; box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
         }
 
         @media (max-width: 850px) { .container { grid-template-columns: 1fr; } aside { position: static; } .achievement-grid { grid-template-columns: 1fr; } }
@@ -143,7 +143,7 @@
 
 <header class="hero">
     <div class="profile-container">
-        <img src="profile.jpg" alt="Abdulla Bahadi" class="profile-img" onerror="this.src='https://ui-avatars.com/api/?name=Abdulla+Bahadi&background=2563eb&color=fff&size=200'">
+        <img src="Abdulla Bahadi Professional Photo.png" alt="Abdulla Bahadi" class="profile-img" onerror="this.src='https://ui-avatars.com/api/?name=Abdulla+Bahadi&background=2563eb&color=fff&size=200'">
     </div>
     <h1>Abdulla Bahadi</h1>
     <div class="tagline">Senior IT Manager & ERP Specialist</div>
@@ -151,94 +151,76 @@
 
 <div class="container">
     <aside>
-        <h2>Connect</h2>
+        <h2>Get in Touch</h2>
+        <a href="mailto:bahadi.abdulla@gmail.com" class="contact-link"><span>📧</span> bahadi.abdulla@gmail.com</a>
+        <a href="https://www.linkedin.com/in/ambahadi" target="_blank" class="contact-link"><span>🔗</span> linkedin.com/in/ambahadi</a>
+        <div class="contact-link"><span>📍</span> Dubai, United Arab Emirates</div>
         
-        <a href="mailto:bahadi.abdulla@gmail.com" class="contact-link">
-            <span class="contact-icon">📧</span>
-            <span>bahadi.abdulla@gmail.com</span>
-        </a>
+        <a href="Abdulla Mohammad Bahadi CV 2025 Updated.pdf" download class="btn-download">📥 Download Full CV</a>
 
-        <a href="https://www.linkedin.com/in/ambahadi" target="_blank" class="contact-link">
-            <span class="contact-icon">🔗</span>
-            <span>linkedin.com/in/ambahadi</span>
-        </a>
-
-        <div class="contact-link">
-            <span class="contact-icon">📍</span>
-            <span>Dubai, UAE</span>
-        </div>
-        
-        <a href="Abdulla Mohammad Bahadi CV 2025 Updated.pdf" download class="btn-download">
-            📥 Download Full CV
-        </a>
-
-        <h2 style="margin-top: 40px;">Expertise</h2>
+        <h2 style="margin-top: 45px;">Expertise</h2>
         <div style="margin-top: 15px;">
-            <span class="skill-tag">Yardi Voyager</span>
-            <span class="skill-tag">SAP REFX</span>
-            <span class="skill-tag">Odoo ERP</span>
-            <span class="skill-tag">Power BI</span>
-            <span class="skill-tag">Cyber Security</span>
+            <span class="skill-tag">Yardi Voyager</span> <span class="skill-tag">SAP REFX</span>
+            <span class="skill-tag">Odoo ERP</span> <span class="skill-tag">PACT Revenue</span>
+            <span class="skill-tag">Power BI</span> <span class="skill-tag">XDR Security</span>
+            <span class="skill-tag">Infrastructure</span> <span class="skill-tag">Data Strategy</span>
         </div>
     </aside>
 
     <main>
         <div class="content-card">
-            <h2>Key Achievements</h2>
+            <h2>High-Level Impact</h2>
             <div class="achievement-grid">
-                <div class="achievement-box">💰 <strong>$1M+ Savings</strong>: Automated reporting via Power BI & Orion BI.</div>
-                <div class="achievement-box">🏗️ <strong>QAR 2.3B Portfolio</strong>: Successfully deployed SAP for Mall of Qatar.</div>
-                <div class="achievement-box">📉 <strong>30% Cost Reduction</strong>: Utility processing automation.</div>
-                <div class="achievement-box">👥 <strong>50+ Professionals</strong>: Trained and mentored data teams.</div>
+                <div class="achievement-box"><strong>$1M+ Saved</strong> Automated BI reporting saving massive annual OpEx.</div>
+                <div class="achievement-box"><strong>QAR 2.3B Portfolio</strong> Deployed complex SAP modules for Mall of Qatar assets.</div>
+                <div class="achievement-box"><strong>30% Efficiency</strong> Reduced utility costs via scheduling & automation.</div>
+                <div class="achievement-box"><strong>50+ Mentored</strong> Upskilled global data teams in ERP & Analysis.</div>
             </div>
         </div>
 
         <div class="content-card">
-            <h2>Career Journey</h2>
+            <h2>Professional Timeline</h2>
             
             <div class="exp-item">
-                <div class="exp-header">
-                    <span class="job-title">IT Manager</span>
-                    <span class="job-date">2025 - Present</span>
-                </div>
+                <div class="exp-header"><span class="job-title">IT Manager</span><span class="job-date">2025 - Present</span></div>
                 <span class="company-name">Emirates Properties, Dubai</span>
-                <p style="font-size: 14px; color: var(--text-dim);">Spearheading Yardi implementation and modernizing IT infrastructure with M365.</p>
+                <p style="font-size: 14.5px; color: var(--text-dim);">Spearheading Yardi implementation for Residential Leasing & FM while securing IT infrastructure via M365.</p>
             </div>
 
             <div class="exp-item">
-                <div class="exp-header">
-                    <span class="job-title">IT Manager (System Overhaul)</span>
-                    <span class="job-date">2023 - 2025</span>
-                </div>
+                <div class="exp-header"><span class="job-title">IT Manager (System Overhaul)</span><span class="job-date">2023 - 2025</span></div>
                 <span class="company-name">DGM Investment LLC, Dubai</span>
-                <p style="font-size: 14px; color: var(--text-dim);">Led total digital transformation, ERP deployment, and XDR security implementation.</p>
+                <p style="font-size: 14.5px; color: var(--text-dim);">Architected total digital transformation: Multi-group Yardi, Odoo Finance, and L3 network security.</p>
             </div>
 
             <div class="exp-item">
-                <div class="exp-header">
-                    <span class="job-title">Senior Application Specialist</span>
-                    <span class="job-date">2020 - 2023</span>
-                </div>
-                <span class="company-name">Urbacon Trading & Contracting (Mall of Qatar), Qatar</span>
-                <p style="font-size: 14px; color: var(--text-dim);">Strategic management of 14 projects under a QAR 2.3B asset management portfolio.</p>
+                <div class="exp-header"><span class="job-title">Senior Application Specialist</span><span class="job-date">2020 - 2023</span></div>
+                <span class="company-name">Urbacon Trading & Contracting (Mall of Qatar)</span>
+                <p style="font-size: 14.5px; color: var(--text-dim);">Managed a QAR 2.3B portfolio. Automated multi-project reporting using SQL, Power BI, and Orion BI.</p>
             </div>
 
             <div class="exp-item">
-                <div class="exp-header">
-                    <span class="job-title">ERP Administrator</span>
-                    <span class="job-date">2017 - 2019</span>
-                </div>
+                <div class="exp-header"><span class="job-title">ERP Administrator</span><span class="job-date">2017 - 2019</span></div>
                 <span class="company-name">Place Vendôme Qatar, Lusail</span>
-                <p style="font-size: 14px; color: var(--text-dim);">Integrated luxury hotel operations with mall retail systems using custom SQL tools.</p>
+                <p style="font-size: 14.5px; color: var(--text-dim);">Integrated luxury hotel operations with mall retail systems. Developed custom SQL business intelligence tools.</p>
             </div>
 
             <div class="exp-item">
-                <div class="exp-header">
-                    <span class="job-title">Network Instructor</span>
-                    <span class="job-date">2012 - 2014</span>
-                </div>
+                <div class="exp-header"><span class="job-title">IT Officer</span><span class="job-date">2015 - 2016</span></div>
+                <span class="company-name">Mall of Qatar / Hilton AlRayyan</span>
+                <p style="font-size: 14.5px; color: var(--text-dim);">Managed retail management systems and network infrastructure for hospitality assets.</p>
+            </div>
+
+            <div class="exp-item">
+                <div class="exp-header"><span class="job-title">IT Support Officer</span><span class="job-date">2014 - 2015</span></div>
+                <span class="company-name">LBDI, Doha, Qatar</span>
+                <p style="font-size: 14.5px; color: var(--text-dim);">Managed Windows Server operating systems and multi-site IT asset auditing.</p>
+            </div>
+
+            <div class="exp-item">
+                <div class="exp-header"><span class="job-title">Network Instructor</span><span class="job-date">2012 - 2014</span></div>
                 <span class="company-name">Zoom Technologies, India</span>
-                <p style="font-size: 14px; color: var(--text-dim);">Corporate CCNA trainer specialized in network architecture and security.</p>
+                <p style="font-size: 14.5px; color: var(--text-dim);">Corporate CCNA trainer specialized in Cisco switching, routing, and site-to-site VPNs.</p>
             </div>
         </div>
     </main>
