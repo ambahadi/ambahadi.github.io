@@ -1,82 +1,197 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Abdulla Bahadi | IT Manager</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      max-width: 900px;
-      margin: auto;
-      padding: 40px 20px;
-      line-height: 1.6;
-      color: #222;
-    }
-    h1, h2 {
-      color: #111;
-    }
-    h2 {
-      border-bottom: 2px solid #eee;
-      padding-bottom: 5px;
-      margin-top: 40px;
-    }
-    ul {
-      padding-left: 20px;
-    }
-    .subtitle {
-      color: #555;
-      font-size: 18px;
-    }
-    .contact a {
-      margin-right: 15px;
-      text-decoration: none;
-      color: #0066cc;
-    }
-  </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Abdulla Bahadi | IT Manager</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f8fafc;
+            --text-dim: #94a3b8;
+            --accent: #38bdf8;
+        }
+
+        * { box-sizing: border-box; }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 50px auto;
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 40px;
+            padding: 20px;
+        }
+
+        /* Sidebar Styling */
+        aside {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 20px;
+            height: fit-content;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            border-radius: 50%;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            font-weight: bold;
+        }
+
+        h1 { font-size: 24px; margin: 0; color: var(--text-main); }
+        .tagline { color: var(--accent); font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; display: block; }
+
+        .contact-link {
+            display: block;
+            color: var(--text-dim);
+            text-decoration: none;
+            margin-bottom: 10px;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+        .contact-link:hover { color: var(--accent); }
+
+        /* Main Content Styling */
+        h2 {
+            font-size: 20px;
+            border-left: 4px solid var(--primary);
+            padding-left: 15px;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .section { margin-bottom: 50px; }
+
+        .job-card {
+            margin-bottom: 30px;
+            position: relative;
+            padding-left: 20px;
+            border-left: 1px solid #334155;
+        }
+
+        .job-card::before {
+            content: "";
+            position: absolute;
+            left: -5px;
+            top: 5px;
+            width: 9px;
+            height: 9px;
+            background: var(--primary);
+            border-radius: 50%;
+        }
+
+        .job-title { font-weight: 700; font-size: 18px; color: var(--text-main); margin: 0; }
+        .company { color: var(--accent); font-size: 14px; display: block; margin-bottom: 10px; }
+
+        .skill-tag {
+            display: inline-block;
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--accent);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            margin: 0 5px 10px 0;
+            border: 1px solid rgba(56, 189, 248, 0.2);
+        }
+
+        .summary {
+            font-size: 16px;
+            color: var(--text-dim);
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid var(--accent);
+        }
+
+        @media (max-width: 768px) {
+            .container { grid-template-columns: 1fr; margin: 20px auto; }
+        }
+    </style>
 </head>
 <body>
 
-<h1>Abdulla Bahadi</h1>
-<p class="subtitle">IT Manager | ERP & Yardi Systems | Real Estate Technology</p>
+<div class="container">
+    <aside>
+        <div class="profile-img">AB</div>
+        <h1>Abdulla Bahadi</h1>
+        <span class="tagline">IT Manager</span>
+        
+        <div style="margin-top: 30px;">
+            <a href="mailto:bahadi.abdulla@gmail.com" class="contact-link">📧 bahadi.abdulla@gmail.com</a>
+            <a href="https://www.linkedin.com/in/ambahadi" class="contact-link">🔗 LinkedIn Profile</a>
+        </div>
 
-<p>
-IT Manager with experience leading ERP implementations, system integrations, and
-technology operations in real estate and property management environments.
-Focused on turning fragmented systems into stable, usable platforms.
-</p>
+        <h3 style="font-size: 16px; margin-top: 40px; color: var(--text-main);">Technical Arsenal</h3>
+        <div style="margin-top: 15px;">
+            <span class="skill-tag">Yardi</span>
+            <span class="skill-tag">PACT</span>
+            <span class="skill-tag">Odoo</span>
+            <span class="skill-tag">Power Apps</span>
+            <span class="skill-tag">Data Migration</span>
+            <span class="skill-tag">ERP Strategy</span>
+            <span class="skill-tag">Vendor Management</span>
+            <span class="skill-tag">Infrastructure</span>
+        </div>
+    </aside>
 
-<h2>Experience</h2>
-<ul>
-  <li><strong>IT Manager – Emirates Properties</strong><br>
-  ERP implementation (Yardi), data migration, system access governance,
-  vendor coordination, and infrastructure oversight.</li>
+    <main>
+        <section class="section">
+            <p class="summary">
+                Strategically minded IT Leader specializing in **Real Estate Technology**. 
+                Proven track record of transforming fragmented workflows into unified, 
+                high-performing ERP ecosystems. 
+            </p>
+        </section>
 
-  <li><strong>IT & Systems Management – Property & Brokerage Operations</strong><br>
-  Managed leasing, FM, finance systems, and business applications across multiple sites.</li>
-</ul>
+        <section class="section">
+            <h2>Experience</h2>
+            
+            <div class="job-card">
+                <p class="job-title">IT Manager</p>
+                <span class="company">Emirates Properties</span>
+                <p style="color: var(--text-dim);">Spearheaded Yardi ERP implementation, managed complex data migrations, and established rigorous system governance across the organization.</p>
+            </div>
 
-<h2>Key Skills</h2>
-<ul>
-  <li>ERP Systems: Yardi, PACT, Odoo</li>
-  <li>Data Migration & System Integration</li>
-  <li>Power Apps & Workflow Automation</li>
-  <li>IT Infrastructure & Vendor Management</li>
-</ul>
+            <div class="job-card">
+                <p class="job-title">IT & Systems Management</p>
+                <span class="company">Property & Brokerage Operations</span>
+                <p style="color: var(--text-dim);">Directed multi-site technology operations, ensuring seamless integration between finance, leasing, and facility management departments.</p>
+            </div>
+        </section>
 
-<h2>Projects</h2>
-<ul>
-  <li>Yardi system implementation and data correction</li>
-  <li>Power App for document approval workflows</li>
-  <li>ERP process mapping for leasing, FM, and finance teams</li>
-</ul>
-
-<h2>Contact</h2>
-<p class="contact">
-  <a href="mailto:bahadi.abdulla@gmail.com">Email</a>
-  <a href="https://www.linkedin.com/in/ambahadi">LinkedIn</a>
-</p>
+        <section class="section">
+            <h2>Key Projects</h2>
+            <div class="job-card">
+                <p class="job-title">Workflow Automation</p>
+                <p style="color: var(--text-dim);">Developed custom Power Apps for document approvals, reducing processing time by significant margins.</p>
+            </div>
+            <div class="job-card">
+                <p class="job-title">ERP Process Mapping</p>
+                <p style="color: var(--text-dim);">Architected end-to-end process maps for Leasing and FM teams, ensuring data integrity during major system transitions.</p>
+            </div>
+        </section>
+    </main>
+</div>
 
 </body>
 </html>
-
