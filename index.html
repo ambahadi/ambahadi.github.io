@@ -2,13 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-    <meta name="description" content="Abdulla Bahadi - Senior IT Manager specializing in ERP (Yardi/SAP), M365 Governance, and Cyber Security.">
-    <title>Abdulla Bahadi | IT Portfolio</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Abdulla Bahadi | Senior IT Manager</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #2563eb;
@@ -17,64 +13,35 @@
             --card-bg: #ffffff;
             --text-main: #1e293b;
             --text-dim: #64748b;
-            --shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.08);
-            --radius: 24px;
+            --accent: #06b6d4;
+            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
         }
 
-        .dark-mode {
-            --bg: #0f172a;
-            --card-bg: #1e293b;
-            --text-main: #f1f5f9;
-            --text-dim: #94a3b8;
-            --shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.3);
-        }
-
-        * { box-sizing: border-box; transition: background 0.4s, color 0.4s; scroll-behavior: smooth; }
+        * { box-sizing: border-box; transition: all 0.3s ease; }
         
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
             background-color: var(--bg);
+            background-image: radial-gradient(at 0% 0%, rgba(37, 99, 235, 0.05) 0px, transparent 50%), 
+                              radial-gradient(at 100% 100%, rgba(6, 182, 212, 0.05) 0px, transparent 50%);
             color: var(--text-main);
             margin: 0;
             line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
         }
 
-        /* --- Navigation --- */
-        nav {
-            position: fixed;
-            bottom: 20px; /* Moved to bottom for mobile thumb-reach */
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(15px);
-            padding: 12px 25px;
-            border-radius: 50px;
-            display: flex;
-            gap: 15px;
-            z-index: 1000;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-            border: 1px solid rgba(255,255,255,0.2);
-            width: max-content;
-        }
-        .dark-mode nav { background: rgba(30, 41, 59, 0.9); }
-        nav a { text-decoration: none; color: var(--text-main); font-weight: 700; font-size: 13px; }
-        
-        /* --- Hero --- */
         .hero {
-            padding: 80px 20px 60px;
+            background: #ffffff;
+            padding: 60px 20px;
             text-align: center;
-            background: linear-gradient(180deg, rgba(37, 99, 235, 0.1) 0%, transparent 100%);
+            border-bottom: 1px solid #e2e8f0;
+            box-shadow: var(--shadow);
         }
 
         .profile-container {
-            width: 160px;
-            height: 160px;
+            position: relative;
+            width: 150px;
+            height: 150px;
             margin: 0 auto 20px;
-            border-radius: 50%;
-            padding: 8px;
-            background: var(--card-bg);
-            box-shadow: var(--shadow);
         }
 
         .profile-img {
@@ -82,244 +49,200 @@
             height: 100%;
             border-radius: 50%;
             object-fit: cover;
+            border: 5px solid #fff;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
         }
 
-        /* --- Layout --- */
         .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px 100px; /* Extra bottom padding for fixed nav */
-        }
-
-        .grid-layout {
+            max-width: 1100px;
+            margin: 40px auto;
             display: grid;
-            grid-template-columns: 1fr; /* Default mobile single column */
-            gap: 25px;
+            grid-template-columns: 320px 1fr;
+            gap: 30px;
+            padding: 0 20px;
         }
 
-        @media (min-width: 900px) {
-            .grid-layout { grid-template-columns: 350px 1fr; }
-            nav { top: 20px; bottom: auto; }
-            .hero { padding: 120px 20px 80px; }
-        }
-
-        .card {
-            background: var(--card-bg);
-            padding: 30px 20px;
-            border-radius: var(--radius);
+        aside {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 30px;
+            height: fit-content;
+            border: 1px solid rgba(255, 255, 255, 0.3);
             box-shadow: var(--shadow);
-            border: 1px solid rgba(255,255,255,0.05);
+            position: sticky;
+            top: 20px;
         }
 
-        /* --- Progress Bars --- */
-        .skill-bar-container { margin-bottom: 20px; }
-        .skill-info { display: flex; justify-content: space-between; font-size: 14px; margin-bottom: 8px; font-weight: 700; }
-        .skill-bar { height: 10px; background: rgba(0,0,0,0.05); border-radius: 10px; overflow: hidden; }
-        .dark-mode .skill-bar { background: rgba(255,255,255,0.1); }
-        .skill-progress { height: 100%; background: var(--primary); border-radius: 10px; }
-
-        /* --- Buttons --- */
-        .btn-group {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            margin-top: 25px;
+        .content-card {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 30px;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+            border: 1px solid #f1f5f9;
         }
-        .btn {
+
+        h1 { font-size: 32px; margin: 0; color: #0f172a; font-weight: 800; }
+        .tagline { color: var(--primary); font-weight: 600; font-size: 18px; margin-top: 5px; }
+
+        h2 { 
+            font-size: 14px; 
+            text-transform: uppercase; 
+            letter-spacing: 2px; 
+            color: var(--secondary); 
+            margin-bottom: 25px; 
+            display: flex; 
+            align-items: center; 
+        }
+        h2::after { content: ""; height: 2px; flex: 1; background: #f1f5f9; margin-left: 15px; }
+
+        /* Contact Links Styling */
+        .contact-link {
             display: flex;
             align-items: center;
-            justify-content: center;
-            gap: 8px;
-            background: var(--primary);
-            color: white !important;
-            padding: 16px;
-            border-radius: 18px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 15px;
-        }
-        .btn-secondary { background: var(--secondary); }
-
-        /* --- Testimonials --- */
-        .testimonial-slider {
-            display: flex;
-            overflow-x: auto;
-            gap: 15px;
-            padding-bottom: 10px;
-            -webkit-overflow-scrolling: touch;
-            scrollbar-width: none;
-        }
-        .testimonial-slider::-webkit-scrollbar { display: none; }
-        .testimonial-item {
-            min-width: 280px;
-            background: rgba(37, 99, 235, 0.05);
-            padding: 20px;
-            border-radius: 20px;
+            gap: 12px;
             font-size: 14px;
-        }
-
-        .project-card {
-            background: rgba(0,0,0,0.02);
-            padding: 20px;
-            border-radius: 20px;
+            color: var(--text-dim);
+            text-decoration: none;
             margin-bottom: 15px;
-            border-left: 4px solid var(--primary);
+            padding: 8px 0;
         }
-        .dark-mode .project-card { background: rgba(255,255,255,0.02); }
+        .contact-link:hover {
+            color: var(--primary);
+            transform: translateX(5px);
+        }
+        .contact-icon { font-size: 18px; }
 
+        .exp-item { margin-bottom: 30px; padding-left: 20px; border-left: 3px solid #e2e8f0; position: relative; }
+        .exp-item:hover { border-left-color: var(--primary); }
+        .exp-header { display: flex; justify-content: space-between; align-items: baseline; }
+        .job-title { font-weight: 700; font-size: 18px; color: #0f172a; }
+        .job-date { font-size: 12px; color: var(--primary); font-weight: 700; background: #eff6ff; padding: 4px 10px; border-radius: 20px; }
+        .company-name { display: block; color: var(--secondary); font-weight: 600; margin-bottom: 5px; }
+
+        .achievement-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .achievement-box { background: #f8fafc; padding: 15px; border-radius: 15px; border: 1px solid #edf2f7; font-size: 14px; }
+
+        .skill-tag {
+            display: inline-block; background: #f1f5f9; color: #475569; padding: 6px 14px; border-radius: 10px;
+            font-size: 13px; font-weight: 600; margin: 0 5px 8px 0;
+        }
+        .skill-tag:hover { background: var(--primary); color: #fff; }
+
+        .btn-download {
+            display: block; text-align: center; background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white; padding: 15px; border-radius: 15px; font-weight: 700; text-decoration: none; 
+            margin-top: 20px; box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+        }
+
+        @media (max-width: 850px) { .container { grid-template-columns: 1fr; } aside { position: static; } .achievement-grid { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
 
-<nav>
-    <a href="#about"><i class="fas fa-user"></i></a>
-    <a href="#experience">Exp</a>
-    <a href="#projects">Proj</a>
-    <a href="#testimonials">Endorse</a>
-    <i class="fas fa-moon mode-toggle" onclick="toggleDarkMode()"></i>
-</nav>
-
 <header class="hero">
     <div class="profile-container">
-        <img src="Abdulla Bahadi Professional Photo.png" alt="Abdulla Bahadi" class="profile-img">
+        <img src="profile.jpg" alt="Abdulla Bahadi" class="profile-img" onerror="this.src='https://ui-avatars.com/api/?name=Abdulla+Bahadi&background=2563eb&color=fff&size=200'">
     </div>
-    <h1 style="font-size: 32px; margin: 0;">Abdulla Bahadi</h1>
-    <p style="font-size: 18px; color: var(--primary); font-weight: 700; margin-top: 5px;">Senior IT Manager</p>
-    
-    <div class="container">
-        <div class="btn-group">
-            <a href="tel:+971569662699" class="btn"><i class="fas fa-phone"></i> Call</a>
-            <a href="https://wa.me/971569662699" class="btn" style="background:#25d366;"><i class="fab fa-whatsapp"></i> Chat</a>
-        </div>
-    </div>
+    <h1>Abdulla Bahadi</h1>
+    <div class="tagline">Senior IT Manager & ERP Specialist</div>
 </header>
 
-<div class="container grid-layout">
-    <aside id="about">
-        <div class="card">
-            <h2 style="font-size: 16px; margin-top: 0; color:var(--primary)">Technical Proficiency</h2>
-            
-            <div class="skill-bar-container">
-                <div class="skill-info"><span>ERP Architecture</span><span>95%</span></div>
-                <div class="skill-bar"><div class="skill-progress" style="width: 95%"></div></div>
-            </div>
-            <div class="skill-bar-container">
-                <div class="skill-info"><span>Cloud & M365</span><span>90%</span></div>
-                <div class="skill-bar"><div class="skill-progress" style="width: 90%"></div></div>
-            </div>
-            <div class="skill-bar-container">
-                <div class="skill-info"><span>Cyber Security</span><span>85%</span></div>
-                <div class="skill-bar"><div class="skill-progress" style="width: 85%"></div></div>
-            </div>
+<div class="container">
+    <aside>
+        <h2>Connect</h2>
+        
+        <a href="mailto:bahadi.abdulla@gmail.com" class="contact-link">
+            <span class="contact-icon">📧</span>
+            <span>bahadi.abdulla@gmail.com</span>
+        </a>
 
-            <div style="margin-top: 30px;">
-                <a href="mailto:bahadi.abdulla@gmail.com" style="display:block; text-decoration:none; color:var(--text-main); margin-bottom:15px; font-weight:600;">
-                    <i class="fas fa-envelope" style="color:var(--primary); margin-right:10px;"></i> Email Me
-                </a>
-                <a href="https://www.linkedin.com/in/ambahadi" style="display:block; text-decoration:none; color:var(--text-main); font-weight:600;">
-                    <i class="fab fa-linkedin" style="color:#0077b5; margin-right:10px;"></i> LinkedIn
-                </a>
-            </div>
+        <a href="https://www.linkedin.com/in/ambahadi" target="_blank" class="contact-link">
+            <span class="contact-icon">🔗</span>
+            <span>linkedin.com/in/ambahadi</span>
+        </a>
 
-            <a href="Abdulla Mohammad Bahadi CV 2025 Updated.pdf" download class="btn btn-secondary" style="width: 100%; margin-top: 20px;">
-                <i class="fas fa-file-pdf"></i> Download CV
-            </a>
+        <div class="contact-link">
+            <span class="contact-icon">📍</span>
+            <span>Dubai, UAE</span>
+        </div>
+        
+        <a href="Abdulla Mohammad Bahadi CV 2025 Updated.pdf" download class="btn-download">
+            📥 Download Full CV
+        </a>
+
+        <h2 style="margin-top: 40px;">Expertise</h2>
+        <div style="margin-top: 15px;">
+            <span class="skill-tag">Yardi Voyager</span>
+            <span class="skill-tag">SAP REFX</span>
+            <span class="skill-tag">Odoo ERP</span>
+            <span class="skill-tag">Power BI</span>
+            <span class="skill-tag">Cyber Security</span>
         </div>
     </aside>
 
     <main>
-        <section class="card" id="projects">
-            <h2 style="font-size: 18px;">Strategic Projects</h2>
-            <div class="project-card">
-                <h3 style="font-size: 16px; margin: 0 0 5px 0;">Digital Transformation</h3>
-                <p style="font-size: 14px; margin: 0; color: var(--text-dim);">Led ERP deployments for QAR 2.3B asset portfolios across Qatar and UAE.</p>
+        <div class="content-card">
+            <h2>Key Achievements</h2>
+            <div class="achievement-grid">
+                <div class="achievement-box">💰 <strong>$1M+ Savings</strong>: Automated reporting via Power BI & Orion BI.</div>
+                <div class="achievement-box">🏗️ <strong>QAR 2.3B Portfolio</strong>: Successfully deployed SAP for Mall of Qatar.</div>
+                <div class="achievement-box">📉 <strong>30% Cost Reduction</strong>: Utility processing automation.</div>
+                <div class="achievement-box">👥 <strong>50+ Professionals</strong>: Trained and mentored data teams.</div>
             </div>
-            <div class="project-card">
-                <h3 style="font-size: 16px; margin: 0 0 5px 0;">Cloud Security</h3>
-                <p style="font-size: 14px; margin: 0; color: var(--text-dim);">Architected secure M365 environments and XDR security layers for multi-site operations.</p>
-            </div>
-        </section>
+        </div>
 
-        <section class="card" id="testimonials">
-            <h2 style="font-size: 18px;">Endorsements</h2>
-            <div class="testimonial-slider">
-                <div class="testimonial-item">
-                    "Abdulla’s work in ERP deployment has been nothing short of perfect."
-                    <b style="display:block; margin-top:10px; color:var(--primary)">— Atif Sajjad</b>
-                </div>
-                <div class="testimonial-item">
-                    "A dedicated professional... manages crises and adhoc challenges with ease."
-                    <b style="display:block; margin-top:10px; color:var(--primary)">— Hamad Bahadi</b>
-                </div>
-            </div>
-        </section>
-
-        <section class="card" id="experience">
-            <h2 style="font-size: 18px;">Timeline</h2>
-           <div class="card">
-            <h2 style="font-size: 18px; margin-bottom: 25px;">Career Timeline</h2>
-
+        <div class="content-card">
+            <h2>Career Journey</h2>
+            
             <div class="exp-item">
-                <span class="job-date">2025 - Present</span>
-                <span class="job-title">IT Manager</span>
+                <div class="exp-header">
+                    <span class="job-title">IT Manager</span>
+                    <span class="job-date">2025 - Present</span>
+                </div>
                 <span class="company-name">Emirates Properties, Dubai</span>
-                <p style="font-size: 14px; color: var(--text-dim);">Leading Yardi ERP implementation for Residential Leasing & FM. Architecting secure M365 governance.</p>
+                <p style="font-size: 14px; color: var(--text-dim);">Spearheading Yardi implementation and modernizing IT infrastructure with M365.</p>
             </div>
 
             <div class="exp-item">
-                <span class="job-date">2023 - 2025</span>
-                <span class="job-title">IT Manager (System Overhaul)</span>
+                <div class="exp-header">
+                    <span class="job-title">IT Manager (System Overhaul)</span>
+                    <span class="job-date">2023 - 2025</span>
+                </div>
                 <span class="company-name">DGM Investment LLC, Dubai</span>
-                <p style="font-size: 14px; color: var(--text-dim);">Directed total technology transformation: Multi-group Yardi, Odoo Finance, and L3 network security architecture.</p>
+                <p style="font-size: 14px; color: var(--text-dim);">Led total digital transformation, ERP deployment, and XDR security implementation.</p>
             </div>
 
             <div class="exp-item">
-                <span class="job-date">2020 - 2023</span>
-                <span class="job-title">Senior Application Specialist</span>
-                <span class="company-name">Urbacon Trading & Contracting (Mall of Qatar)</span>
-                <p style="font-size: 14px; color: var(--text-dim);">Strategic management of QAR 2.3B portfolio. Built automated reporting engines using SQL and Power BI.</p>
+                <div class="exp-header">
+                    <span class="job-title">Senior Application Specialist</span>
+                    <span class="job-date">2020 - 2023</span>
+                </div>
+                <span class="company-name">Urbacon Trading & Contracting (Mall of Qatar), Qatar</span>
+                <p style="font-size: 14px; color: var(--text-dim);">Strategic management of 14 projects under a QAR 2.3B asset management portfolio.</p>
             </div>
 
             <div class="exp-item">
-                <span class="job-date">2017 - 2019</span>
-                <span class="job-title">ERP Administrator</span>
+                <div class="exp-header">
+                    <span class="job-title">ERP Administrator</span>
+                    <span class="job-date">2017 - 2019</span>
+                </div>
                 <span class="company-name">Place Vendôme Qatar, Lusail</span>
-                <p style="font-size: 14px; color: var(--text-dim);">Integrated luxury hotel operations with mall systems. Managed mission-critical Yardi databases.</p>
+                <p style="font-size: 14px; color: var(--text-dim);">Integrated luxury hotel operations with mall retail systems using custom SQL tools.</p>
             </div>
 
             <div class="exp-item">
-                <span class="job-date">2015 - 2016</span>
-                <span class="job-title">IT Officer</span>
-                <span class="company-name">Mall of Qatar / Hilton AlRayyan</span>
-                <p style="font-size: 14px; color: var(--text-dim);">Managed retail systems and network infrastructure for major hospitality and commercial assets.</p>
-            </div>
-
-            <div class="exp-item">
-                <span class="job-date">2014 - 2015</span>
-                <span class="job-title">IT Support Officer</span>
-                <span class="company-name">LBDI, Doha, Qatar</span>
-                <p style="font-size: 14px; color: var(--text-dim);">Windows Server administration and multi-site IT asset deployment for enterprise clients.</p>
-            </div>
-
-            <div class="exp-item" style="margin-bottom: 0;">
-                <span class="job-date">2012 - 2014</span>
-                <span class="job-title">Network Instructor</span>
+                <div class="exp-header">
+                    <span class="job-title">Network Instructor</span>
+                    <span class="job-date">2012 - 2014</span>
+                </div>
                 <span class="company-name">Zoom Technologies, India</span>
-                <p style="font-size: 14px; color: var(--text-dim);">Corporate trainer for Cisco networking, specialized in VLANs, VPNs, and Layer 3 routing.</p>
-                    </div>
-        </section>
+                <p style="font-size: 14px; color: var(--text-dim);">Corporate CCNA trainer specialized in network architecture and security.</p>
+            </div>
+        </div>
     </main>
 </div>
 
-<script>
-    function toggleDarkMode() {
-        document.body.classList.toggle('dark-mode');
-        const icon = document.querySelector('.mode-toggle');
-        icon.classList.toggle('fa-moon');
-        icon.classList.toggle('fa-sun');
-    }
-</script>
-
 </body>
 </html>
-
