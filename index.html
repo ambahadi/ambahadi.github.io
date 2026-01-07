@@ -31,6 +31,11 @@
             --border: rgba(255,255,255,0.1);
         }
 
+		/* FIX: Prevents header overlap when clicking nav links */
+        html {
+            scroll-padding-top: 110px;
+        }
+		
         * { box-sizing: border-box; transition: background 0.3s ease, color 0.3s ease; scroll-behavior: smooth; }
         
         body {
@@ -422,6 +427,7 @@
 
 </body>
 </html>
+
 
 
 
