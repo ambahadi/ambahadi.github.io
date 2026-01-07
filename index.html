@@ -42,7 +42,6 @@
             padding: 0 20px;
         }
 
-        /* Sidebar Styles */
         aside {
             background: var(--card-bg);
             padding: 30px;
@@ -65,9 +64,6 @@
             margin-bottom: 12px; display: flex; align-items: center;
         }
 
-        /* Content Styles */
-        main { background: transparent; }
-
         .content-card {
             background: var(--card-bg);
             padding: 40px;
@@ -80,17 +76,26 @@
         h2 { font-size: 14px; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 25px; display: flex; align-items: center; }
         h2::after { content: ""; height: 1px; flex: 1; background: rgba(255,255,255,0.1); margin-left: 20px; }
 
-        .stat-grid {
-            display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 30px;
+        .achievement-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
         }
 
-        .stat-box {
+        .achievement-item {
             background: rgba(255,255,255,0.03);
-            padding: 15px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05);
+            padding: 20px;
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.05);
+            font-size: 14px;
+            color: var(--text-dim);
         }
 
-        .stat-val { display: block; font-size: 20px; font-weight: 700; color: var(--primary); }
-        .stat-label { font-size: 11px; color: var(--text-dim); text-transform: uppercase; }
+        .achievement-item strong {
+            color: var(--text-main);
+            display: block;
+            margin-bottom: 5px;
+        }
 
         .exp-item { margin-bottom: 35px; position: relative; padding-left: 25px; border-left: 2px solid var(--primary); }
         .exp-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 5px; }
@@ -104,13 +109,10 @@
             font-size: 12px; font-weight: 600; margin: 0 5px 8px 0;
         }
 
-        .project-highlight {
-            border: 1px solid var(--secondary);
-            padding: 15px; border-radius: 12px; margin-top: 10px;
-            background: rgba(99, 102, 241, 0.05);
+        @media (max-width: 850px) { 
+            .container { grid-template-columns: 1fr; margin-top: 20px; }
+            .achievement-grid { grid-template-columns: 1fr; }
         }
-
-        @media (max-width: 850px) { .container { grid-template-columns: 1fr; margin-top: 20px; } }
     </style>
 </head>
 <body>
@@ -130,13 +132,13 @@
             <div class="contact-item">📍 Dubai, UAE</div>
             <div class="contact-item">📧 bahadi.abdulla@gmail.com</div>
             <div class="contact-item">🔗 linkedin.com/in/ambahadi</div>
-            <div style="margin-top: 20px;">
-    <a href="Abdulla Mohammad Bahadi CV 2025 Updated.pdf" 
-       download="Abdulla_Bahadi_CV" 
-       style="display: inline-block; background: var(--accent); color: var(--bg); padding: 10px 20px; border-radius: 12px; font-weight: 700; text-decoration: none; font-size: 14px;">
-       📥 Download Full CV (PDF)
-    </a>
-</div>
+            <div style="margin-top: 25px;">
+                <a href="Abdulla Mohammad Bahadi CV 2025 Updated.pdf" 
+                   download="Abdulla_Bahadi_CV" 
+                   style="display: block; text-align: center; background: var(--accent); color: var(--bg); padding: 12px; border-radius: 12px; font-weight: 700; text-decoration: none; font-size: 13px;">
+                   📥 Download Full CV
+                </a>
+            </div>
         </section>
 
         <section style="margin-bottom: 40px;">
@@ -150,21 +152,46 @@
             <div class="contact-item">✓ CDMP Data Management</div>
             <div class="contact-item">✓ Lean Six Sigma Green Belt</div>
             <div class="contact-item">✓ CCNA (Cisco Certified)</div>
-            <div class="contact-item">✓ Scrum Professional</div>
+            <div class="contact-item">✓ Strategy & Performance Management</div>
         </section>
     </aside>
 
     <main>
         <div class="content-card">
-            <h2>Executive Summary</h2>
-            <p style="color: var(--text-dim); margin: 0;">
-                Results-driven IT Manager with 13+ years of experience leading digital transformation across UAE and Qatar[cite: 32]. 
-                Expert in the full lifecycle of ERP deployment (SAP, Yardi, Odoo, PACT) and infrastructure overhaul[cite: 33, 83, 84]. 
-                Proven track record in high-stakes asset management environments, managing portfolios worth billions in QAR[cite: 62].
-            </p>
-            <div class="stat-grid" style="margin-top: 25px;">
-                <div class="stat-box"><span class="stat-val">$1M+</span><span class="stat-label">Annual OpEx Saved</span></div>
-                <div class="stat-box"><span class="stat-val">50+</span><span class="stat-label">Professionals Mentored</span></div>
+            <h2>Strategic Impact & Achievements</h2>
+            <div class="achievement-grid">
+                <div class="achievement-item">
+                    <strong>Business Intelligence</strong>
+                    Automated internal reporting via Power BI & Orion BI, saving over $1M in annual operational costs.
+                </div>
+                <div class="achievement-item">
+                    <strong>ERP Deployment</strong>
+                    Successfully deployed SAP modules for a QAR 2.3B asset management portfolio across 14 projects.
+                </div>
+                <div class="achievement-item">
+                    <strong>Cost Optimization</strong>
+                    Reduced utility processing costs by 30% through invoice automation and scheduling tools.
+                </div>
+                <div class="achievement-item">
+                    <strong>Workflow Engineering</strong>
+                    Rebuilt tracker workflows to improve task completion timelines by 35% across departments.
+                </div>
+                <div class="achievement-item">
+                    <strong>Team Leadership</strong>
+                    Trained and mentored 50+ data professionals, expanding the operational footprint by 20%.
+                </div>
+                <div class="achievement-item">
+                    <strong>Operational Excellence</strong>
+                    Introduced Lean practices, improving delivery efficiency by 50%+ in reporting and analysis.
+                </div>
+                <div class="achievement-item">
+                    <strong>Infrastructure Savings</strong>
+                    Achieved cost savings through open-source tools, license optimizations, and PRTG deployment.
+                </div>
+                <div class="achievement-item">
+                    <strong>Digital Communication</strong>
+                    Enabled seamless collaboration by migrating company communication to Outlook & Teams from WhatsApp.
+                </div>
             </div>
         </div>
 
@@ -173,27 +200,24 @@
             <div>
                 <strong style="display:block; margin-bottom:10px; font-size: 13px; color: var(--text-dim);">ERP & ENTERPRISE SYSTEMS</strong>
                 <span class="skill-pill">Yardi Voyager</span> <span class="skill-pill">SAP REFX/FI/MM</span> 
-                <span class="skill-pill">Odoo</span> <span class="skill-pill">PACT Revenue</span> 
-                <span class="skill-pill">Lark</span> <span class="skill-pill">Orion BI</span>
+                <span class="skill-pill">Odoo</span> <span class="skill-pill">PACT Revenue</span> <span class="skill-pill">Lark</span>
             </div>
             <div style="margin-top: 20px;">
-                <strong style="display:block; margin-bottom:10px; font-size: 13px; color: var(--text-dim);">INFRASTRUCTURE & DATA</strong>
-                <span class="skill-pill">Power BI</span> <span class="skill-pill">SQL Server</span> 
-                <span class="skill-pill">XDR Security</span> <span class="skill-pill">Python</span> 
-                <span class="skill-pill">Active Directory</span> <span class="skill-pill">MS Teams/Outlook Migration</span>
+                <strong style="display:block; margin-bottom:10px; font-size: 13px; color: var(--text-dim);">INFRASTRUCTURE & SECURITY</strong>
+                <span class="skill-pill">Power BI</span> <span class="skill-pill">XDR Security</span> <span class="skill-pill">SQL Server</span> 
+                <span class="skill-pill">Active Directory</span> <span class="skill-pill">Network Monitoring</span>
             </div>
         </div>
 
         <div class="content-card">
             <h2>Career Milestones</h2>
-
             <div class="exp-item">
                 <div class="exp-header">
                     <span class="job-title">IT Manager</span>
                     <span class="job-date">2025 - Present</span>
                 </div>
                 <span class="company-name">Emirates Properties, Dubai</span>
-                <p style="font-size: 14px; color: var(--text-dim);">Leading the Yardi ERP implementation for Residential Leasing and FM[cite: 74]. Migrated entire company communication from WhatsApp to secure Microsoft 365 environments[cite: 75].</p>
+                <p style="font-size: 14px; color: var(--text-dim);">Leading Yardi implementation and transitioning company workflows to secure Microsoft 365 environments.</p>
             </div>
 
             <div class="exp-item">
@@ -202,10 +226,7 @@
                     <span class="job-date">2023 - 2025</span>
                 </div>
                 <span class="company-name">DGM Investment LLC, Dubai</span>
-                <div class="project-highlight">
-                    <strong style="font-size: 13px; color: var(--accent);">Key Achievement:</strong>
-                    <p style="font-size: 13px; margin: 5px 0 0;">Executed a total IT system overhaul: Implemented Yardi for property management, Odoo for multi-group finance, and deployed Layer 3 network infrastructure with XDR security[cite: 83, 84, 85, 86].</p>
-                </div>
+                <p style="font-size: 14px; color: var(--text-dim);">Directed a total technology overhaul including Yardi and Odoo deployment with advanced network security.</p>
             </div>
 
             <div class="exp-item">
@@ -213,17 +234,8 @@
                     <span class="job-title">Senior Application Specialist</span>
                     <span class="job-date">2020 - 2023</span>
                 </div>
-                <span class="company-name">Mall of Qatar / Assets Management, Qatar</span>
-                <p style="font-size: 14px; color: var(--text-dim);">Managed a QAR 2.3B asset portfolio[cite: 62]. Integrated SAP and Yardi with hotel operations and delivered BI solutions for real-time reporting[cite: 94, 95].</p>
-            </div>
-
-            <div class="exp-item" style="border-left-color: var(--secondary);">
-                <div class="exp-header">
-                    <span class="job-title">ERP Administrator</span>
-                    <span class="job-date">2017 - 2019</span>
-                </div>
-                <span class="company-name">Place Vendôme Qatar, Lusail</span>
-                <p style="font-size: 14px; color: var(--text-dim);">Orchestrated the ERP integration between luxury hotel operations and mall systems, managing complex Yardi databases and custom SQL reporting[cite: 100, 101, 102].</p>
+                <span class="company-name">Mall of Qatar / Assets Management</span>
+                <p style="font-size: 14px; color: var(--text-dim);">Managed multimillion-dollar asset portfolios and high-level ERP integrations across luxury developments.</p>
             </div>
         </div>
     </main>
@@ -231,4 +243,3 @@
 
 </body>
 </html>
-
