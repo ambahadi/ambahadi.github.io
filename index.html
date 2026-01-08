@@ -49,6 +49,20 @@
             color: var(--text-main);
             margin: 0;
             line-height: 1.7;
+
+            /* ✅ safety belt for accidental overflow */
+            overflow-x: hidden;
+        }
+
+        /* ✅ stop long links/strings from forcing page wider */
+        a, p, h1, h2, h3, h4, span, div, li {
+            overflow-wrap: anywhere;
+            word-break: break-word;
+        }
+
+        img, svg, video {
+            max-width: 100%;
+            height: auto;
         }
 
         /* --- Animations --- */
@@ -113,14 +127,19 @@
             border: 1px solid var(--border);
             max-width: 90%;
             animation: fadeIn 0.5s ease;
+
+            /* ✅ constrain nav width */
+            width: min(1100px, 92vw);
         }
         .dark-mode nav { background: rgba(30, 41, 59, 0.8); }
+
         nav a { 
             text-decoration: none; 
             color: var(--text-main); 
             font-weight: 600; 
             font-size: 13px; 
-            white-space: nowrap;
+            /* ⚠️ was nowrap: causes overflow on in-between widths */
+            white-space: normal;
             position: relative;
         }
         nav a:hover { color: var(--primary); }
@@ -142,6 +161,7 @@
             color: var(--text-main);
             margin-left: auto;
             transition: transform 0.3s ease;
+            flex-shrink: 0;
         }
         .mode-toggle:hover {
             transform: rotate(20deg);
@@ -152,6 +172,19 @@
             cursor: pointer;
             font-size: 20px;
             color: var(--text-main);
+            flex-shrink: 0;
+        }
+
+        /* ✅ nav links wrap instead of forcing width */
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex: 1;
+            min-width: 0;
+            flex-wrap: wrap;
+            row-gap: 8px;
+            justify-content: center;
         }
 
         /* --- Hero --- */
@@ -253,6 +286,12 @@
             margin-top: 20px; 
         }
 
+        /* ✅ critical: allow grid children to shrink (prevents overflow) */
+        .grid-layout > aside,
+        .grid-layout > main {
+            min-width: 0;
+        }
+
         .card {
             background: var(--card-bg);
             padding: 35px;
@@ -261,6 +300,7 @@
             margin-bottom: 25px;
             border: 1px solid var(--border);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            max-width: 100%;
         }
 
         .card:hover {
@@ -302,18 +342,23 @@
             display: flex;
             justify-content: space-between;
             margin-bottom: 8px;
+            gap: 10px;
+            min-width: 0;
         }
 
         .skill-name {
             font-weight: 700;
             font-size: 14px;
             color: var(--text-main);
+            min-width: 0;
         }
 
         .skill-level {
             font-size: 12px;
             color: var(--primary);
             font-weight: 700;
+            white-space: nowrap;
+            flex-shrink: 0;
         }
 
         .skill-bar {
@@ -347,6 +392,7 @@
             margin-bottom: 12px;
             border: 1px solid var(--border);
             transition: transform 0.2s ease, box-shadow 0.2s ease;
+            min-width: 0;
         }
 
         .cert-item:hover {
@@ -369,6 +415,7 @@
 
         .cert-content {
             flex: 1;
+            min-width: 0;
         }
 
         .cert-title {
@@ -391,6 +438,7 @@
             padding-bottom: 35px;
             border-left: 2px solid var(--primary);
             transition: border-color 0.3s ease;
+            min-width: 0;
         }
         .exp-item:last-child { border-left-color: transparent; }
         .exp-item:hover { border-left-color: var(--accent); }
@@ -401,17 +449,20 @@
             align-items: baseline;
             margin-bottom: 5px;
             gap: 10px;
+            min-width: 0;
         }
         .job-title { 
             font-weight: 800; 
             font-size: clamp(16px, 2vw, 18px);
-            color: var(--text-main); 
+            color: var(--text-main);
+            min-width: 0;
         }
         .job-date { 
             font-size: clamp(11px, 1.5vw, 13px);
             font-weight: 700; 
             color: var(--primary);
             white-space: nowrap;
+            flex-shrink: 0;
         }
         .company-name { 
             display: block; 
@@ -435,6 +486,7 @@
             scroll-snap-type: x mandatory;
             scrollbar-width: thin;
             scrollbar-color: var(--primary) transparent;
+            max-width: 100%;
         }
         .testimonial-slider::-webkit-scrollbar { height: 8px; }
         .testimonial-slider::-webkit-scrollbar-track { background: transparent; }
@@ -520,6 +572,7 @@
             transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
             position: relative;
             overflow: hidden;
+            min-width: 0;
         }
 
         .project-card::before {
@@ -565,6 +618,7 @@
             transition: transform 0.2s, box-shadow 0.2s;
             border: none;
             cursor: pointer;
+            max-width: 100%;
         }
 
         .btn:hover {
@@ -598,6 +652,7 @@
             padding: 12px;
             border-radius: 12px;
             transition: background 0.2s ease, transform 0.2s ease;
+            min-width: 0;
         }
 
         .contact-link:hover {
@@ -796,7 +851,7 @@
 
 <header class="hero">
     <div class="profile-container">
-        <img src="Abdulla Bahadi Professional Photo.png" alt="Abdulla Bahadi" class="profile-img">
+        <img src="abdulla-bahadi-professional-photo.png" alt="Abdulla Bahadi" class="profile-img">
     </div>
     <h1>Abdulla Bahadi</h1>
     <p class="hero-subtitle">IT Manager | Enterprise Application Specialist</p>
@@ -983,7 +1038,7 @@
             </div>
         </section>
 
-	<section class="card animate-on-scroll" id="impact">
+        <section class="card animate-on-scroll" id="impact">
             <div class="section-header">
                 <div class="section-icon"><i class="fas fa-trophy"></i></div>
                 <h2 class="section-title">Strategic Impacts</h2>
@@ -1021,56 +1076,53 @@
             </div>
         </section>
 
-<section class="card animate-on-scroll" id="projects">
-    <div class="section-header">
-        <div class="section-icon"><i class="fas fa-briefcase"></i></div>
-        <h2 class="section-title">Key Project Portfolios</h2>
-    </div>
-    
-    <div class="project-grid">
-        
-        <div class="project-card">
-            <h3>Mall of Qatar</h3>
-            <p style="font-size: 14px; margin: 0 0 10px 0; color: var(--text-dim);">
-                Directed IT infrastructure for management during construction. Led the end-to-end <strong>Yardi Voyager</strong> deployment for one of the region's largest retail destinations ($1.48B project).
-            </p>
-            <div style="font-size: 12px; font-weight: 700; color: var(--text-main);"><i class="fas fa-calendar"></i> 2015 — 2016</div>
-        </div>
+        <section class="card animate-on-scroll" id="projects">
+            <div class="section-header">
+                <div class="section-icon"><i class="fas fa-briefcase"></i></div>
+                <h2 class="section-title">Key Project Portfolios</h2>
+            </div>
+            
+            <div class="project-grid">
+                <div class="project-card">
+                    <h3>Mall of Qatar</h3>
+                    <p style="font-size: 14px; margin: 0 0 10px 0; color: var(--text-dim);">
+                        Directed IT infrastructure for management during construction. Led the end-to-end <strong>Yardi Voyager</strong> deployment for one of the region's largest retail destinations ($1.48B project).
+                    </p>
+                    <div style="font-size: 12px; font-weight: 700; color: var(--text-main);"><i class="fas fa-calendar"></i> 2015 — 2016</div>
+                </div>
 
-        <div class="project-card">
-            <h3>Place Vendôme Qatar</h3>
-            <p style="font-size: 14px; margin: 0 0 10px 0; color: var(--text-dim);">
-                Collaborated with the management team through the construction of the 1.1M m² Lusail landmark ($1.3B project). Enhanced Yardi modules and spearheaded IT management.
-            </p>
-            <div style="font-size: 12px; font-weight: 700; color: var(--text-main);"><i class="fas fa-calendar"></i> 2016 — 2019</div>
-        </div>
+                <div class="project-card">
+                    <h3>Place Vendôme Qatar</h3>
+                    <p style="font-size: 14px; margin: 0 0 10px 0; color: var(--text-dim);">
+                        Collaborated with the management team through the construction of the 1.1M m² Lusail landmark ($1.3B project). Enhanced Yardi modules and spearheaded IT management.
+                    </p>
+                    <div style="font-size: 12px; font-weight: 700; color: var(--text-main);"><i class="fas fa-calendar"></i> 2016 — 2019</div>
+                </div>
 
-        <div class="project-card">
-            <h3>Assets Group Portfolio</h3>
-            <p style="font-size: 14px; margin: 0 0 10px 0; color: var(--text-dim);">
-                Managed Yardi ERP for Mall of Qatar and successfully implemented <strong>SAP REFX/FI</strong> for the residential portfolio along with group-wide IT management.
-            </p>
-            <div style="font-size: 12px; font-weight: 700; color: var(--text-main);"><i class="fas fa-calendar"></i> 2020 — 2023</div>
-        </div>
+                <div class="project-card">
+                    <h3>Assets Group Portfolio</h3>
+                    <p style="font-size: 14px; margin: 0 0 10px 0; color: var(--text-dim);">
+                        Managed Yardi ERP for Mall of Qatar and successfully implemented <strong>SAP REFX/FI</strong> for the residential portfolio along with group-wide IT management.
+                    </p>
+                    <div style="font-size: 12px; font-weight: 700; color: var(--text-main);"><i class="fas fa-calendar"></i> 2020 — 2023</div>
+                </div>
 
-        <div class="project-card">
-            <h3>IT & ERP Recovery Transformation</h3>
-            <p style="font-size: 14px; margin: 0 0 10px 0; color: var(--text-dim);">
-                Led a <strong>team of 8 specialists</strong> to resolve legacy IT bottlenecks. Orchestrated a full Yardi deployment and a complete Network/Cybersecurity restructure.
-            </p>
-            <div style="font-size: 12px; font-weight: 700; color: var(--text-main);"><i class="fas fa-calendar"></i> 2023 — 2025</div>
-        </div>
+                <div class="project-card">
+                    <h3>IT & ERP Recovery Transformation</h3>
+                    <p style="font-size: 14px; margin: 0 0 10px 0; color: var(--text-dim);">
+                        Led a <strong>team of 8 specialists</strong> to resolve legacy IT bottlenecks. Orchestrated a full Yardi deployment and a complete Network/Cybersecurity restructure.
+                    </p>
+                    <div style="font-size: 12px; font-weight: 700; color: var(--text-main);"><i class="fas fa-calendar"></i> 2023 — 2025</div>
+                </div>
+            </div>
+        </section>
 
-    </div>
-</section>
-
-		<section class="card animate-on-scroll" id="testimonials">
+        <section class="card animate-on-scroll" id="testimonials">
             <div class="section-header">
                 <div class="section-icon"><i class="fas fa-quote-left"></i></div>
                 <h2 class="section-title">Professional Endorsements</h2>
             </div>
             <div class="testimonial-slider">
-                
                 <div class="testimonial-item">
                     "Abdulla is a dedicated professional... his industry knowledge is key to company diversifying. One of few professionals with good credits in managing crises."
                     <span class="testimonial-author"><i class="fas fa-user-circle"></i> Hamad Mohammed Bahadi — Master CDMP-DAMA</span>
@@ -1085,10 +1137,8 @@
                     "He is a dedicated individual who does not stop until the job is done. I would not hesitate to hire Abdulla in the future."
                     <span class="testimonial-author"><i class="fas fa-user-circle"></i> Nida Muhammad — Fractional HR Director</span>
                 </div>
-
             </div>
         </section>
-		
 		
         <section class="card animate-on-scroll" id="experience">
             <div class="section-header">
