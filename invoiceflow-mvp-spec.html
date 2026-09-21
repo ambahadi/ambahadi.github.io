@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content="InvoiceFlow — MVP product specification for a post-ASP e-invoicing approval workflow platform for UAE and Qatar SMEs, by Abdulla Bahadi.">
+    <title>InvoiceFlow | MVP Product Specification — Abdulla Bahadi</title>
+
+    <meta property="og:title" content="InvoiceFlow | MVP Product Specification">
+    <meta property="og:description" content="A post-ASP invoice approval workflow platform for UAE and Qatar SMEs — product spec by Abdulla Bahadi.">
+    <meta property="og:image" content="https://ambahadi.github.io/abdulla-bahadi-professional-photo.png">
+    <meta property="og:url" content="https://ambahadi.github.io/invoiceflow-mvp-spec.html">
+    <meta property="og:type" content="article">
+
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary: #2563eb;
+            --secondary: #4f46e5;
+            --accent: #06b6d4;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-dim: #64748b;
+            --shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.08);
+            --radius: 24px;
+            --border: rgba(0,0,0,0.05);
+        }
+        .dark-mode {
+            --bg: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-dim: #94a3b8;
+            --shadow: 0 20px 40px -5px rgba(0, 0, 0, 0.3);
+            --border: rgba(255,255,255,0.1);
+        }
+        html { scroll-behavior: smooth; }
+        * { box-sizing: border-box; transition: background 0.3s ease, color 0.3s ease; }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
+            margin: 0;
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+        a, p, h1, h2, h3, h4, span, div, li { overflow-wrap: anywhere; word-break: break-word; }
+
+        .topbar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+        .dark-mode .topbar { background: rgba(15, 23, 42, 0.85); }
+        .back-link {
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 700;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .back-link:hover { color: var(--primary); }
+        .mode-toggle { cursor: pointer; font-size: 18px; color: var(--text-main); }
+
+        .doc-hero {
+            padding: 60px 20px 30px;
+            text-align: center;
+            background: radial-gradient(circle at top, rgba(37, 99, 235, 0.1) 0%, transparent 70%);
+        }
+        .doc-kicker {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(37, 99, 235, 0.1);
+            color: var(--primary);
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 18px;
+        }
+        .doc-hero h1 {
+            font-size: clamp(28px, 5vw, 42px);
+            font-weight: 800;
+            margin: 10px 0;
+        }
+        .doc-subtitle {
+            font-size: clamp(15px, 2.4vw, 18px);
+            color: var(--text-dim);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .doc-meta {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            flex-wrap: wrap;
+            margin-top: 22px;
+            font-size: 13px;
+            color: var(--text-dim);
+            font-weight: 600;
+        }
+        .doc-meta span i { color: var(--primary); margin-right: 6px; }
+
+        .container { max-width: 880px; margin: 0 auto; padding: 20px 20px 100px; }
+
+        .card {
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            margin-bottom: 22px;
+            border: 1px solid var(--border);
+        }
+        .section-header { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+        .section-icon {
+            width: 40px; height: 40px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            color: white; font-size: 17px; flex-shrink: 0;
+        }
+        .section-title { margin: 0; font-size: 21px; font-weight: 800; }
+        .section-num { color: var(--text-dim); font-weight: 700; font-size: 13px; margin-right: 6px; }
+
+        .card p, .card li { font-size: 15px; color: var(--text-dim); }
+        .card strong { color: var(--text-main); }
+        .card ul { padding-left: 20px; margin: 10px 0; }
+        .card li { margin-bottom: 10px; }
+        .card ol { padding-left: 20px; }
+
+        .feature-list { list-style: none; padding-left: 0; margin: 0; }
+        .feature-list li {
+            display: flex;
+            gap: 14px;
+            padding: 14px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .feature-list li:last-child { border-bottom: none; }
+        .feature-num {
+            flex-shrink: 0;
+            width: 30px; height: 30px;
+            border-radius: 8px;
+            background: var(--bg);
+            color: var(--primary);
+            font-weight: 800;
+            font-size: 13px;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .feature-body h4 { margin: 0 0 4px; font-size: 15px; color: var(--text-main); font-weight: 700; }
+        .feature-body p { margin: 0; font-size: 14px; }
+
+        .callout {
+            border-left: 4px solid var(--primary);
+            background: rgba(37, 99, 235, 0.06);
+            padding: 16px 20px;
+            border-radius: 0 12px 12px 0;
+            font-size: 14px;
+            color: var(--text-dim);
+            margin-top: 10px;
+        }
+        .callout.warn { border-left-color: var(--warning); background: rgba(245, 158, 11, 0.08); }
+        .callout strong { color: var(--text-main); }
+
+        .pill-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+        .pill {
+            background: rgba(37, 99, 235, 0.08);
+            color: var(--primary);
+            padding: 6px 14px;
+            border-radius: 10px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+        .pill.out { background: rgba(100, 116, 139, 0.12); color: var(--text-dim); }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white !important;
+            padding: 10px 22px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 13px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3); }
+        .doc-cta { margin-top: 24px; }
+
+        .footer-note {
+            text-align: center;
+            color: var(--text-dim);
+            font-size: 13px;
+            margin-top: 10px;
+        }
+        .footer-note a { color: var(--primary); font-weight: 700; text-decoration: none; }
+
+        @media (max-width: 600px) {
+            .card { padding: 22px 18px; }
+            .doc-hero { padding: 40px 16px 20px; }
+        }
+    </style>
+</head>
+<body>
+<div class="topbar">
+    <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Abdulla Bahadi</a>
+    <i class="fas fa-moon mode-toggle" onclick="toggleDarkMode()"></i>
+</div>
+
+<header class="doc-hero">
+    <div class="doc-kicker"><i class="fas fa-lightbulb"></i> Founder Project · Product Spec</div>
+    <h1>InvoiceFlow</h1>
+    <p class="doc-subtitle">The internal approval and audit-trail layer that sits downstream of UAE &amp; Qatar's mandatory e-invoicing ASPs — turning compliant, raw structured invoices into a managed workflow.</p>
+    <div class="doc-meta">
+        <span><i class="fas fa-user"></i>Prepared for Abdulla Bahadi</span>
+        <span><i class="fas fa-calendar"></i>September 21, 2026</span>
+        <span><i class="fas fa-tag"></i>Working title</span>
+    </div>
+    <div class="doc-cta">
+        <a href="https://send-approve-log.lovable.app" target="_blank" rel="noopener noreferrer" class="btn"><i class="fas fa-rocket"></i> View Live Prototype <i class="fas fa-up-right-from-square"></i></a>
+    </div>
+</header>
+
+<div class="container">
+
+    <section class="card">
+        <div class="section-header">
+            <div class="section-icon"><i class="fas fa-triangle-exclamation"></i></div>
+            <h2 class="section-title"><span class="section-num">01</span>Problem Statement</h2>
+        </div>
+        <p>The UAE and Qatar are rolling out mandatory structured e-invoicing (UAE: Peppol PINT AE format, phased 2026&ndash;2027; Qatar: mandate announced, technical spec pending). Government-Accredited Service Providers (ASPs) will own compliance, validation, and transmission of invoices between businesses and the tax authority.</p>
+        <p>However, ASPs do <strong>not</strong> solve the internal problem: once a structured invoice arrives, someone inside the business still has to check it against a purchase order, route it to the right department for approval, chase people who are sitting on it, and keep an audit trail for 5&ndash;7+ years. Today, small and mid-sized businesses do this via email threads and WhatsApp messages, with no visibility, no accountability, and no clean audit record.</p>
+        <div class="callout"><strong>InvoiceFlow sits AFTER the ASP</strong>, turning a compliant but raw structured invoice into a managed internal approval workflow.</div>
+    </section>
+
+    <section class="card">
+        <div class="section-header">
+            <div class="section-icon"><i class="fas fa-users"></i></div>
+            <h2 class="section-title"><span class="section-num">02</span>Ideal Customer Profile</h2>
+        </div>
+        <ul>
+            <li>Small and mid-sized businesses in the UAE and Qatar subject to e-invoicing mandates &mdash; SMEs particularly, given later compliance deadlines and lower existing tooling maturity.</li>
+            <li>Finance and accounts payable teams currently managing approvals manually.</li>
+            <li>Businesses that already use, or will soon appoint, an ASP for compliance but have no internal workflow layer.</li>
+            <li>Company roles: <strong>requesters</strong> (raise or receive invoices), <strong>approvers</strong> (department heads, budget owners), <strong>finance admins</strong> (oversight, reconciliation, audit), <strong>super admins</strong> (company configuration).</li>
+        </ul>
+    </section>
+
+    <section class="card">
+        <div class="section-header">
+            <div class="section-icon"><i class="fas fa-list-check"></i></div>
+            <h2 class="section-title"><span class="section-num">03</span>Core MVP Features</h2>
+        </div>
+        <ul class="feature-list">
+            <li><div class="feature-num">1</div><div class="feature-body"><h4>Invoice Intake</h4><p>Invoices enter via webhook from the ASP, email parsing, or manual upload, landing in a staging queue for review.</p></div></li>
+            <li><div class="feature-num">2</div><div class="feature-body"><h4>Lightweight PO Register</h4><p>A simple purchase order register built directly into the app (not synced from an external ERP). Matching against a PO is optional per invoice, since many smaller businesses don't raise formal POs for every purchase.</p></div></li>
+            <li><div class="feature-num">3</div><div class="feature-body"><h4>Automatic PO and Invoice Matching</h4><p>Where a PO exists, the system automatically matches on vendor, amount, and department to flag discrepancies early.</p></div></li>
+            <li><div class="feature-num">4</div><div class="feature-body"><h4>Configurable Approval Workflow Engine</h4><p>The heart of the product. Businesses define their own document types &mdash; invoices, purchase orders, budget approvals, RFPs &mdash; each with its own configurable approval chain. Routing rules key off fields like supplier category, department, or amount thresholds.</p></div></li>
+            <li><div class="feature-num">5</div><div class="feature-body"><h4>Notifications &amp; Mobile-Friendly Approval</h4><p>Approvers are notified by email and WhatsApp or Teams with a secure link straight to a mobile-friendly approval screen. They can approve, reject, or reassign; rejections route back to the requester with a reason attached.</p></div></li>
+            <li><div class="feature-num">6</div><div class="feature-body"><h4>Escalation and Delegation</h4><p>If an approver doesn't act within a set time, the request automatically escalates or delegates to a backup approver, so nothing silently stalls.</p></div></li>
+            <li><div class="feature-num">7</div><div class="feature-body"><h4>Dashboards</h4><p>Personal dashboards show each user their pending and completed items. Finance admins get a company-wide view plus a compliance deadline tracker for upcoming regulatory dates.</p></div></li>
+            <li><div class="feature-num">8</div><div class="feature-body"><h4>Audit Trail</h4><p>Every action is logged and the full trail is exportable as a PDF or spreadsheet, supporting the 5&ndash;7 year retention requirements auditors and tax authorities expect.</p></div></li>
+            <li><div class="feature-num">9</div><div class="feature-body"><h4>Roles and Permissions</h4><p>Four roles &mdash; requester, approver, finance admin, super admin &mdash; strictly scoped per company with no cross-tenant access.</p></div></li>
+            <li><div class="feature-num">10</div><div class="feature-body"><h4>Branded PDF Template System</h4><p>Since compliant invoices arrive as raw XML with no visual layout, InvoiceFlow offers 10&ndash;15 professionally designed invoice templates in UAE business style. Each company uploads its logo once, and incoming data auto-populates the chosen template into a branded, readable PDF shown on the dashboard and in notifications.</p></div></li>
+        </ul>
+    </section>
+
+    <section class="card">
+        <div class="section-header">
+            <div class="section-icon"><i class="fas fa-scale-balanced"></i></div>
+            <h2 class="section-title"><span class="section-num">04</span>Compliance Positioning</h2>
+        </div>
+        <p>InvoiceFlow is a <strong>tertiary layer</strong>, not a party to the FTA's five-corner e-invoicing model (supplier, supplier's ASP, buyer's ASP, buyer, FTA). The ASP holds the legal recordkeeping and retrievability obligation for the compliant invoice itself, and typically gives even small businesses a dashboard to send and receive invoices directly.</p>
+        <p>InvoiceFlow's role is strictly the internal workflow layer that sits on top of what the ASP already delivers &mdash; approval routing, PO matching, comments, and audit trails for internal business decisions. This is a meaningfully different data set to what the FTA cares about, and InvoiceFlow itself has no direct regulatory relationship with the FTA; no licensing or accreditation requirement applies.</p>
+        <div class="callout warn">That said, this is not zero compliance obligation. InvoiceFlow stores UAE business data (vendor names, amounts, approval trails) and personal data (approver names, emails), so standard UAE PDPL obligations apply as a data processor: encryption, access control, and clear terms of service about what is retained and what happens to customer data if they leave the platform. <strong>InvoiceFlow should never present itself as a customer's compliance archive</strong> &mdash; that responsibility stays with the business and its ASP.</div>
+    </section>
+
+    <section class="card">
+        <div class="section-header">
+            <div class="section-icon"><i class="fas fa-palette"></i></div>
+            <h2 class="section-title"><span class="section-num">05</span>Design Direction</h2>
+        </div>
+        <p>The product must feel modern, clean, and intuitive &mdash; closer in spirit to Odoo's approachability than to the clunky, dated workflows of legacy ERP systems like Yardi Voyager or pre-Hana SAP. Simplicity and ease of use for the end approver (who may not be technical) is a first-class design goal, not an afterthought.</p>
+        <p>At the same time, the visual identity and interaction design should be distinct and original &mdash; not a copy of Odoo's or any other existing product's look and feel &mdash; to avoid any brand or design overlap. The goal is a unique, recognizable interface that shares Odoo's philosophy of simplicity, not its specific look.</p>
+    </section>
+
+    <section class="card">
+        <div class="section-header">
+            <div class="section-icon"><i class="fas fa-shield-halved"></i></div>
+            <h2 class="section-title"><span class="section-num">06</span>Security &amp; Compliance Requirements</h2>
+        </div>
+        <ul>
+            <li>Encryption at rest and in transit.</li>
+            <li>Role-based access control, strictly scoped per company tenant.</li>
+            <li>Any vendor or support access used to resolve issues is limited, time-boxed, and logged separately from normal user activity.</li>
+            <li>Hosting location is a business/cost decision rather than a fixed legal requirement, since InvoiceFlow is not the FTA's system of record (to be discussed separately).</li>
+        </ul>
+    </section>
+
+    <section class="card">
+        <div class="section-header">
+            <div class="section-icon"><i class="fas fa-ban"></i></div>
+            <h2 class="section-title"><span class="section-num">07</span>Explicitly Out of Scope for MVP</h2>
+        </div>
+        <div class="pill-row">
+            <span class="pill out">Native Android/iOS app</span>
+            <span class="pill out">True two-way ERP sync</span>
+            <span class="pill out">Acting as an ASP or tax connector</span>
+            <span class="pill out">Legal system of record for FTA retention</span>
+        </div>
+        <ul style="margin-top: 16px;">
+            <li>Native Android or iOS app &mdash; mobile web is sufficient.</li>
+            <li>True two-way ERP synchronization &mdash; a read-only PO import is a possible phase-two option.</li>
+            <li>Acting as an Accredited Service Provider or tax authority connector; InvoiceFlow always sits downstream of the ASP.</li>
+            <li>Acting as the legal system of record for FTA-mandated invoice retention; that responsibility remains with the business and its ASP.</li>
+        </ul>
+    </section>
+
+    <section class="card">
+        <div class="section-header">
+            <div class="section-icon"><i class="fas fa-road"></i></div>
+            <h2 class="section-title"><span class="section-num">08</span>Backlog <span style="font-weight: 600; color: var(--text-dim); font-size: 14px;">(post-MVP, in priority order)</span></h2>
+        </div>
+        <ol>
+            <li>Deepen and extend the generalized approval workflow engine across more document types and more complex routing logic as usage grows.</li>
+            <li>FTA input tax and VAT recovery register, auto-populated from approved invoices, with recoverable versus non-recoverable flagging per expense category.</li>
+        </ol>
+    </section>
+
+    <section class="card">
+        <div class="section-header">
+            <div class="section-icon"><i class="fas fa-star"></i></div>
+            <h2 class="section-title"><span class="section-num">09</span>Suggested Future Extra</h2>
+        </div>
+        <p>A vendor-facing status-check portal, letting suppliers log in and see where their invoice sits in the approval chain without having to call or email the business for updates.</p>
+    </section>
+
+    <section class="card">
+        <div class="section-header">
+            <div class="section-icon"><i class="fas fa-sack-dollar"></i></div>
+            <h2 class="section-title"><span class="section-num">10</span>Business Model</h2>
+        </div>
+        <p>Subscription-based, billed monthly or yearly with an annual discount, tiered by number of users and invoice volume. This suits a recurring workflow tool with ongoing hosting and compliance overhead better than a one-time fee.</p>
+    </section>
+
+    <p class="footer-note">A product concept by <a href="index.html">Abdulla Bahadi</a> &mdash; IT Manager &amp; ERP Specialist exploring SaaS opportunities in the UAE/Qatar e-invoicing transition.</p>
+</div>
+
+<script>
+    function toggleDarkMode() {
+        document.body.classList.toggle('dark-mode');
+        const icon = document.querySelector('.mode-toggle');
+        if (icon) { icon.classList.toggle('fa-moon'); icon.classList.toggle('fa-sun'); }
+        localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+    }
+    if (localStorage.getItem('darkMode') === 'true') {
+        document.body.classList.add('dark-mode');
+        const icon = document.querySelector('.mode-toggle');
+        if (icon) { icon.classList.remove('fa-moon'); icon.classList.add('fa-sun'); }
+    }
+</script>
+</body>
+</html>
