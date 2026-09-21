@@ -190,6 +190,22 @@
         }
         .pill.out { background: rgba(100, 116, 139, 0.12); color: var(--text-dim); }
 
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white !important;
+            padding: 10px 22px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 13px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3); }
+        .doc-cta { margin-top: 24px; }
+
         .footer-note {
             text-align: center;
             color: var(--text-dim);
@@ -218,6 +234,9 @@
         <span><i class="fas fa-user"></i>Prepared for Abdulla Bahadi</span>
         <span><i class="fas fa-calendar"></i>September 21, 2026</span>
         <span><i class="fas fa-tag"></i>Working title</span>
+    </div>
+    <div class="doc-cta">
+        <a href="https://send-approve-log.lovable.app" target="_blank" rel="noopener noreferrer" class="btn"><i class="fas fa-rocket"></i> View Live Prototype <i class="fas fa-up-right-from-square"></i></a>
     </div>
 </header>
 
